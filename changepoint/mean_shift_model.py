@@ -57,11 +57,11 @@ class MeanShiftModel(object):
         """ Compute the Cumulative Sum at each point 't' of the time series. """
         mean = np.mean(ts)
         cusums = np.zeros(len(ts))
-        cusum[0] = (ts[0] - mean)
+        cusums[0] = (ts[0] - mean)
         for i in np.arange(1, len(ts)):
             cusums[i] = cusums[i - 1] + (ts[i] - mean)
 
-        assert(np.isclose(cumsum[-1], 0.0))
+        assert(np.isclose(cusums[-1], 0.0))
         return cusums
 
     def detect_mean_shift(self, ts, B=1000):
